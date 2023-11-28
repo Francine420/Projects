@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Letters Bold</title>
+    <style>
+        .formatted-word {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="inputWords">Enter words:</label>
+    <input type="text" id="inputWords">
+    <button onclick="formatWords()">Format Words</button>
+    <div id="result"></div>
+
+    <script>
+        
+        function formatWords() {
+            // Get input
+            var inputWords = document.getElementById("inputWords").value;
+
+            // Split words with whitespace
+            var words = inputWords.split(' ');
+
+            // Initialize result
+            var result = "";
+
+            // Repeats code to be bold on each word
+            words.forEach(function(word) {
+               
+                word = word.trim();
+
+                // Set amount of letter to be bold
+                var numLettersToBold = 3;
+
+                // Initialize the formatted word string
+                var formattedWord = "";
+
+                // Identifies each letter to be bold
+                for (var i = 0; i < word.length; i++) {
+                    // Letters go bold
+                    if (i < numLettersToBold) {
+                        formattedWord += '<span class="formatted-word">' + word[i] + '</span>';
+                    } else {
+                        formattedWord += word[i];
+                    }
+                }
+
+                // Adds the formatted word to the result string
+                result += "Formatted Word: " + formattedWord + "<br>";
+            });
+            
+            // Display the result
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
